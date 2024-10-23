@@ -10,8 +10,6 @@ import { StoreContext } from "@/context/Context";
 import { useContext } from "react";
 
 export default function TabTwoScreen() {
-  const { inputString } = useContext(StoreContext);
-  console.log(inputString);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}

@@ -4,13 +4,13 @@ import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import StoreContextProvider from "@/context/Context";
+import { Provider } from "react-redux";
+import CounterStore from "@/context/Slice";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
   return (
-    <StoreContextProvider>
+    <Provider store={CounterStore}>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
@@ -42,6 +42,6 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
-    </StoreContextProvider>
+    </Provider>
   );
 }
