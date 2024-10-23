@@ -41,6 +41,19 @@ export default function TabLayout() {
             ),
           }}
         />
+        <Tabs.Screen
+          name="like"
+          options={{
+            title: "Like",
+            tabBarActiveTintColor: "red",
+            tabBarIcon: ({ _, focused }) => (
+              <TabBarIcon
+                name={focused ? "heart" : "heart-outline"}
+                color={focused ? "red" : "grey"}
+              />
+            ),
+          }}
+        />
       </Tabs>
     </Provider>
   );
