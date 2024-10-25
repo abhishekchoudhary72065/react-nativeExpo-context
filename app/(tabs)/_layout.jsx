@@ -1,60 +1,46 @@
-import { Tabs } from "expo-router";
 import React from "react";
+import { Tabs } from "expo-router";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
-import { Provider } from "react-redux";
-import CounterStore from "@/context/Slice";
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const TabLayout = () => {
   return (
-    <Provider store={CounterStore}>
-      <Tabs
-        screenOptions={{
-          tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-          headerShown: false,
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          tabBarLabel: "Meditate",
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons
+              name={focused ? "flower-tulip" : "flower-tulip-outline"}
+              size={24}
+              color={color}
+            />
+          ),
         }}
-      >
-        <Tabs.Screen
-          name="index"
-          options={{
-            title: "Home",
-            tabBarIcon: ({ color, focused }) => (
-              <TabBarIcon
-                name={focused ? "home" : "home-outline"}
-                color={color}
-              />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="explore"
-          options={{
-            title: "Explore",
-            tabBarIcon: ({ color, focused }) => (
-              <TabBarIcon
-                name={focused ? "code-slash" : "code-slash-outline"}
-                color={color}
-              />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="like"
-          options={{
-            title: "Like",
-            tabBarActiveTintColor: "red",
-            tabBarIcon: ({ _, focused }) => (
-              <TabBarIcon
-                name={focused ? "heart" : "heart-outline"}
-                color={focused ? "red" : "grey"}
-              />
-            ),
-          }}
-        />
-      </Tabs>
-    </Provider>
+      />
+      <Tabs.Screen
+        name="test"
+        options={{
+          tabBarLabel: "Test",
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons
+              name={
+                focused
+                  ? "book-open-page-variant"
+                  : "book-open-page-variant-outline"
+              }
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+    </Tabs>
   );
-}
+};
+
+export default TabLayout;
